@@ -1074,4 +1074,6 @@ footer img:hover { opacity: 1; transform: scale(1.06); }
   .contact-info-content { padding: 70px 24px; }
   .contact-form    { padding: 60px 24px; }
   footer           { padding: 28px 24px; flex-direction: column; gap: 14px; text-align: center; }
+  body             { cursor: auto; }
+  .btn-submit      { cursor: pointer; }
 }

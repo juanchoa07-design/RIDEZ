@@ -70,36 +70,43 @@ function enterSite() {
 document.getElementById('intro-enter').addEventListener('click', enterSite);
 
 /* ═══════════════════════════════════════
-   CUSTOM CURSOR — smooth magnetic follow
+   CUSTOM CURSOR — solo en desktop (no touch)
 ═══════════════════════════════════════ */
+const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 const dot  = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
-let mouseX = 0, mouseY = 0;
-let ringX  = 0, ringY  = 0;
 
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  dot.style.left = mouseX + 'px';
-  dot.style.top  = mouseY + 'px';
-});
+if (!isTouchDevice) {
+  let mouseX = 0, mouseY = 0;
+  let ringX  = 0, ringY  = 0;
 
-(function animateRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  ring.style.left = ringX + 'px';
-  ring.style.top  = ringY + 'px';
-  requestAnimationFrame(animateRing);
-})();
-
-document.querySelectorAll('a, button, .portfolio-item, .service-card').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    dot.style.transform = 'translate(-50%,-50%) scale(0)';
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top  = mouseY + 'px';
   });
-  el.addEventListener('mouseleave', () => {
-    dot.style.transform = 'translate(-50%,-50%) scale(1)';
+
+  (function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top  = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  })();
+
+  document.querySelectorAll('a, button, .portfolio-item, .service-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      dot.style.transform = 'translate(-50%,-50%) scale(0)';
+    });
+    el.addEventListener('mouseleave', () => {
+      dot.style.transform = 'translate(-50%,-50%) scale(1)';
+    });
   });
-});
+} else {
+  dot.style.display  = 'none';
+  ring.style.display = 'none';
+}
 
 /* ═══════════════════════════════════════
    SCROLL PROGRESS BAR
