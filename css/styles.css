@@ -281,12 +281,12 @@ body {
 }
 
 /* ══════════════════════════════════════
-   ABOUT
+   ABOUT — dos imágenes apiladas
 ══════════════════════════════════════ */
 #about {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 90px;
+  gap: 80px;
   align-items: center;
   padding: 130px 60px;
 }
@@ -299,40 +299,70 @@ body {
   margin-bottom: 18px;
 }
 
-.about-image {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4/5;
+.about-images {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  gap: 4px;
+  height: 580px;
 }
-.about-image img {
+
+.about-img-main,
+.about-img-secondary {
+  overflow: hidden;
+  position: relative;
+}
+.about-img-main img,
+.about-img-secondary img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s ease;
+  transition: transform 0.75s ease;
+  display: block;
 }
-.about-image:hover img { transform: scale(1.05); }
-.about-image::after {
+.about-img-main:hover img,
+.about-img-secondary:hover img { transform: scale(1.05); }
+
+.about-img-main::after,
+.about-img-secondary::after {
   content: '';
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.07);
   pointer-events: none;
 }
 
 /* ══════════════════════════════════════
-   STATS
+   STATS — fondo con foto de evento
 ══════════════════════════════════════ */
 #stats {
-  background: var(--dark);
+  position: relative;
   padding: 80px 60px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
+  overflow: hidden;
+}
+
+.stats-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../Ridez/escandalo.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.stats-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,8,8,0.78);
 }
 
 .stat-item {
+  position: relative;
+  z-index: 1;
   padding: 48px 40px;
-  background: var(--gray);
+  background: rgba(26,26,26,0.6);
+  backdrop-filter: blur(4px);
   text-align: center;
 }
 .stat-number {
@@ -346,13 +376,13 @@ body {
   font-size: 11px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--light);
   margin-top: 10px;
   display: block;
 }
 
 /* ══════════════════════════════════════
-   SERVICES
+   SERVICES — cards con imagen propia
 ══════════════════════════════════════ */
 #services {
   padding: 130px 60px;
@@ -368,10 +398,12 @@ body {
 
 .service-card {
   background: var(--gray);
-  padding: 48px 40px;
+  padding: 48px 40px 0;
   position: relative;
   overflow: hidden;
   transition: background 0.35s;
+  display: flex;
+  flex-direction: column;
 }
 .service-card::after {
   content: '';
@@ -382,9 +414,10 @@ body {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
+  z-index: 2;
 }
-.service-card:hover::after  { transform: scaleX(1); }
-.service-card:hover         { background: var(--mid); }
+.service-card:hover::after { transform: scaleX(1); }
+.service-card:hover        { background: var(--mid); }
 
 .service-number {
   font-family: 'Bebas Neue', sans-serif;
@@ -405,6 +438,80 @@ body {
   line-height: 1.72;
   color: var(--muted);
   font-weight: 300;
+  flex: 1;
+  padding-bottom: 28px;
+}
+
+/* imagen en el fondo de cada card */
+.service-img {
+  height: 150px;
+  overflow: hidden;
+  margin: 0 -40px;
+}
+.service-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+  filter: grayscale(20%);
+  transition: opacity 0.5s ease, transform 0.65s ease;
+  display: block;
+}
+.service-card:hover .service-img img {
+  opacity: 0.7;
+  transform: scale(1.07);
+  filter: grayscale(0%);
+}
+
+/* ══════════════════════════════════════
+   FEATURE STRIP — imagen full-bleed
+══════════════════════════════════════ */
+#feature-strip {
+  position: relative;
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  overflow: hidden;
+}
+
+.feature-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../Ridez/escenario2.jpg');
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.04);
+  will-change: transform;
+}
+
+.feature-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8,8,8,0.88) 40%,
+    rgba(8,8,8,0.35) 100%
+  );
+}
+
+.feature-content {
+  position: relative;
+  z-index: 1;
+}
+
+.feature-quote {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 7.5vw, 100px);
+  line-height: 0.93;
+  color: var(--pure);
+  margin-bottom: 32px;
+}
+
+.feature-logo {
+  height: 40px;
+  opacity: 0.55;
+  display: block;
 }
 
 /* ══════════════════════════════════════
@@ -517,18 +624,44 @@ body {
 }
 
 /* ══════════════════════════════════════
-   CONTACT
+   CONTACT — columna izquierda con foto
 ══════════════════════════════════════ */
 #contact {
-  background: var(--dark);
-  padding: 130px 60px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 90px;
-  align-items: start;
+  align-items: stretch;
 }
 
-.contact-info > p {
+.contact-info {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('../Ridez/ridez bandeja.jpg');
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s ease;
+}
+.contact-info:hover .contact-info-img { transform: scale(1.04); }
+
+.contact-info::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(8,8,8,0.80);
+  z-index: 1;
+}
+
+.contact-info-content {
+  position: relative;
+  z-index: 2;
+  padding: 100px 60px;
+}
+
+.contact-info-content > p {
   font-size: 15px;
   line-height: 1.8;
   color: var(--light);
@@ -546,7 +679,13 @@ body {
 }
 .contact-value { font-size: 14px; color: var(--white); }
 
-.contact-form { display: flex; flex-direction: column; gap: 20px; }
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 100px 60px;
+  background: var(--dark);
+}
 .form-group   { display: flex; flex-direction: column; gap: 8px; }
 .form-group label {
   font-size: 10px;
@@ -645,13 +784,18 @@ footer img   { height: 26px; }
   .nav-links       { display: none; }
   #hero            { padding: 0 24px 70px; }
   #about           { grid-template-columns: 1fr; gap: 44px; padding: 90px 24px; }
-  #stats           { grid-template-columns: repeat(2,1fr); padding: 60px 24px; }
+  .about-images    { height: 420px; grid-template-rows: 2fr 1fr; }
+  #stats           { grid-template-columns: repeat(2,1fr); padding: 0; }
+  .stat-item       { padding: 40px 24px; }
   #services        { padding: 90px 24px; }
   .services-grid   { grid-template-columns: 1fr; }
+  #feature-strip   { height: 50vh; padding: 0 24px; }
   #portfolio       { padding: 90px 24px; }
   .portfolio-grid  { grid-template-columns: repeat(6,1fr); }
   .p1,.p2,.p3,.p4,.p5,.p6,.p7,.p8,.p9,.p10,.p11,.p12 { grid-column: span 6; grid-row: span 5; }
   .showreel-header { padding: 90px 24px 44px; }
-  #contact         { grid-template-columns: 1fr; gap: 48px; padding: 90px 24px; }
+  #contact         { grid-template-columns: 1fr; }
+  .contact-info-content { padding: 70px 24px; }
+  .contact-form    { padding: 60px 24px; }
   footer           { padding: 28px 24px; flex-direction: column; gap: 14px; text-align: center; }
 }

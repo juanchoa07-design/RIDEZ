@@ -81,13 +81,21 @@
       <p>Desde montajes de escenario hasta iluminación, sonido y coordinación técnica integral, cubrimos cada detalle para garantizar que cada evento sea perfecto.</p>
       <p>Con años de experiencia en el sector, nuestro equipo combina creatividad y precisión técnica para superar expectativas en cada proyecto.</p>
     </div>
-    <div class="about-image reveal">
-      <img src="Ridez/ridez consola.jpg" alt="RIDEZ en acción">
+    <!-- Dos imágenes apiladas -->
+    <div class="about-images reveal">
+      <div class="about-img-main">
+        <img src="Ridez/ridez consola.jpg" alt="Consola RIDEZ">
+      </div>
+      <div class="about-img-secondary">
+        <img src="Ridez/phonetec.jpg" alt="RIDEZ Phonetec">
+      </div>
     </div>
   </section>
 
-  <!-- STATS -->
+  <!-- STATS — fondo con foto de evento -->
   <section id="stats">
+    <div class="stats-bg"></div>
+    <div class="stats-overlay"></div>
     <div class="stat-item reveal">
       <span class="stat-number">+100</span>
       <span class="stat-label">Eventos realizados</span>
@@ -106,43 +114,79 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- SERVICES — cada card con imagen propia -->
   <section id="services">
     <div class="reveal">
       <p class="section-tag">Lo que hacemos</p>
       <h2 class="section-title">Servicios</h2>
     </div>
     <div class="services-grid">
+
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <h3 class="service-name">Producción Técnica</h3>
         <p class="service-desc">Gestión integral de todos los aspectos técnicos del evento. Coordinación de equipos, logística y ejecución perfecta.</p>
+        <div class="service-img">
+          <img src="Ridez/cables conecados.jpg" alt="">
+        </div>
       </div>
+
       <div class="service-card reveal">
         <div class="service-number">02</div>
         <h3 class="service-name">Diseño de Escenario</h3>
         <p class="service-desc">Creación y montaje de escenarios únicos que transforman cualquier espacio en un venue espectacular.</p>
+        <div class="service-img">
+          <img src="Ridez/escenario.jpg" alt="">
+        </div>
       </div>
+
       <div class="service-card reveal">
         <div class="service-number">03</div>
         <h3 class="service-name">Iluminación</h3>
         <p class="service-desc">Diseño y operación de sistemas de iluminación profesional que crean atmósferas y experiencias visuales impactantes.</p>
+        <div class="service-img">
+          <img src="Ridez/escandalo2.jpg" alt="">
+        </div>
       </div>
+
       <div class="service-card reveal">
         <div class="service-number">04</div>
         <h3 class="service-name">Audio Profesional</h3>
         <p class="service-desc">Sistemas de sonido de alta fidelidad para eventos de cualquier escala, desde corporativos hasta festivales.</p>
+        <div class="service-img">
+          <img src="Ridez/ridez consola.jpg" alt="">
+        </div>
       </div>
+
       <div class="service-card reveal">
         <div class="service-number">05</div>
         <h3 class="service-name">Producción Audiovisual</h3>
         <p class="service-desc">Videomapping, pantallas LED, transmisión en vivo y contenidos visuales que elevan cada producción.</p>
+        <div class="service-img">
+          <img src="Ridez/ridez mock up.jpg" alt="">
+        </div>
       </div>
+
       <div class="service-card reveal">
         <div class="service-number">06</div>
         <h3 class="service-name">Coordinación de Eventos</h3>
         <p class="service-desc">Dirección completa del evento, asegurando que cada minuto fluya según el plan con excelencia.</p>
+        <div class="service-img">
+          <img src="Ridez/navidad contigo.jpg" alt="">
+        </div>
       </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURE STRIP — imagen full-bleed entre servicios y portfolio -->
+  <section id="feature-strip">
+    <div class="feature-bg"></div>
+    <div class="feature-overlay"></div>
+    <div class="feature-content reveal">
+      <p class="section-tag">Experiencias que perduran</p>
+      <h2 class="feature-quote">Cada evento,<br>una obra maestra.</h2>
+      <img class="feature-logo" src="Ridez/LOGO RIDEZ.png" alt="RIDEZ">
     </div>
   </section>
 
@@ -215,25 +259,28 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT — fondo con imagen sutil + columna izquierda con foto -->
   <section id="contact">
     <div class="contact-info reveal">
-      <p class="section-tag">Hablemos</p>
-      <h2 class="section-title">Trabajemos<br>juntos.</h2>
-      <div class="divider"></div>
-      <p>Cada proyecto es único. Cuéntanos tu idea y construiremos juntos la experiencia perfecta para tu evento.</p>
-      <div class="contact-details">
-        <div class="contact-item">
-          <span class="contact-label">Email</span>
-          <span class="contact-value">contacto@ridez.com</span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">Instagram</span>
-          <span class="contact-value">@ridez</span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">Ubicación</span>
-          <span class="contact-value">Argentina</span>
+      <div class="contact-info-img"></div>
+      <div class="contact-info-content">
+        <p class="section-tag">Hablemos</p>
+        <h2 class="section-title">Trabajemos<br>juntos.</h2>
+        <div class="divider"></div>
+        <p>Cada proyecto es único. Cuéntanos tu idea y construiremos juntos la experiencia perfecta para tu evento.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">contacto@ridez.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Instagram</span>
+            <span class="contact-value">@ridez</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Ubicación</span>
+            <span class="contact-value">Argentina</span>
+          </div>
         </div>
       </div>
     </div>
