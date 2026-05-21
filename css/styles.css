@@ -805,6 +805,31 @@ body:has(.service-card:hover) #cursor-ring {
 }
 
 /* ══════════════════════════════════════
+   SEPARADOR SHOWREEL → CONTACTO
+══════════════════════════════════════ */
+#contact-sep {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 64px 60px;
+  background: var(--black);
+}
+.sep-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+}
+.sep-logo {
+  height: 30px;
+  opacity: 0.35;
+  transition: opacity 0.4s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+.sep-logo:hover {
+  opacity: 0.7;
+  transform: scale(1.08);
+}
+
+/* ══════════════════════════════════════
    CONTACT — columna izquierda con foto
 ══════════════════════════════════════ */
 #contact {
@@ -859,6 +884,22 @@ body:has(.service-card:hover) #cursor-ring {
   min-width: 88px;
 }
 .contact-value { font-size: 14px; color: var(--white); }
+.contact-ig {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s;
+}
+.contact-ig::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--pure);
+  transition: width 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.contact-ig:hover { color: var(--pure); }
+.contact-ig:hover::after { width: 100%; }
 
 .contact-form {
   display: flex;
@@ -1002,6 +1043,7 @@ footer img:hover { opacity: 1; transform: scale(1.06); }
   .portfolio-grid  { grid-template-columns: repeat(6,1fr); }
   .p1,.p2,.p3,.p4,.p5,.p6,.p7,.p8,.p9,.p10,.p11,.p12 { grid-column: span 6; grid-row: span 5; }
   .showreel-header { padding: 90px 24px 44px; }
+  #contact-sep     { padding: 44px 24px; gap: 20px; }
   #contact         { grid-template-columns: 1fr; }
   .contact-info-content { padding: 70px 24px; }
   .contact-form    { padding: 60px 24px; }
